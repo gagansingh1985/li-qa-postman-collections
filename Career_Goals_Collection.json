@@ -1,0 +1,1101 @@
+{
+	"info": {
+		"_postman_id": "c1a3c9cf-5796-429e-914c-0ee4b69906e6",
+		"name": "Career Goals",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ProfileIAM",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify profile information API response status message is OK\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has a JSON body\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has a identifier property\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.globals.set(\"id\", jsonData.identifier);\r",
+							"    pm.expect(jsonData.identifier).to.be.a('string');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify profile information API response Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"pm.test(\"Verify profile information API response body contains fields: identifier , updatedTimestamp , keycloakUserId , clientName , realmName , sourceApp  \", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"identifier\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"updatedTimestamp\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"keycloakUserId\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"clientName\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"realmName\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"sourceApp\");\r",
+							"});\r",
+							"\r",
+							"var schema  =  {\r",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema\",\r",
+							"    \"$id\": \"http://example.com/example.json\",\r",
+							"    \"type\": \"object\",\r",
+							"    \"title\": \"The root schema\",\r",
+							"    \"description\": \"The root schema comprises the entire JSON document.\",\r",
+							"    \"default\": {},\r",
+							"    \"examples\": [\r",
+							"        {\r",
+							"            \"identifier\": \"471759176583\",\r",
+							"            \"updatedTimestamp\": \"2021-12-06 20:16:32\",\r",
+							"            \"keycloakUserId\": \"QWERQWER-960b-42d7-9669-c7157689069ai\",\r",
+							"            \"clientName\": \"LivingProfile2\",\r",
+							"            \"realmName\": \"LivingProfile-realm1\",\r",
+							"            \"sourceApp\": \"living-profile\"\r",
+							"        }\r",
+							"    ],\r",
+							"    \"required\": [\r",
+							"        \"identifier\",\r",
+							"        \"updatedTimestamp\",\r",
+							"        \"keycloakUserId\",\r",
+							"        \"clientName\",\r",
+							"        \"realmName\",\r",
+							"        \"sourceApp\"\r",
+							"    ],\r",
+							"    \"properties\": {\r",
+							"        \"identifier\": {\r",
+							"            \"$id\": \"#/properties/identifier\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The identifier schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"471759176583\"\r",
+							"            ]\r",
+							"        },\r",
+							"        \"updatedTimestamp\": {\r",
+							"            \"$id\": \"#/properties/updatedTimestamp\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The updatedTimestamp schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"2021-12-06 20:16:32\"\r",
+							"            ]\r",
+							"        },\r",
+							"        \"keycloakUserId\": {\r",
+							"            \"$id\": \"#/properties/keycloakUserId\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The keycloakUserId schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"QWERQWER-960b-42d7-9669-c7157689069ai\"\r",
+							"            ]\r",
+							"        },\r",
+							"        \"clientName\": {\r",
+							"            \"$id\": \"#/properties/clientName\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The clientName schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"LivingProfile2\"\r",
+							"            ]\r",
+							"        },\r",
+							"        \"realmName\": {\r",
+							"            \"$id\": \"#/properties/realmName\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The realmName schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"LivingProfile-realm1\"\r",
+							"            ]\r",
+							"        },\r",
+							"        \"sourceApp\": {\r",
+							"            \"$id\": \"#/properties/sourceApp\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The sourceApp schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"living-profile\"\r",
+							"            ]\r",
+							"        }\r",
+							"    },\r",
+							"    \"additionalProperties\": true\r",
+							"}\r",
+							"pm.test('Verify personal information API schema with response', function() {\r",
+							"    var result=tv4.validateResult(pm.response.json(), schema);\r",
+							"    if(!result.valid){\r",
+							"        console.log(result);\r",
+							"    }\r",
+							"    pm.expect(result.valid).to.be.true;\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Verify profile information API request headers : Accept , Connection & Accept Encoding\", function () {\r",
+							"   pm.request.to.have.header(\"Accept-Encoding\");\r",
+							"   pm.request.to.have.header(\"Accept\");\r",
+							"   pm.request.to.have.header(\"Connection\");\r",
+							"});\r",
+							"pm.test(\"Verify profile information API request headers values for Accept , Connection & Accept Encoding fields \", function () {\r",
+							"   pm.request.to.be.header(\"Accept-Encoding\", \"gzip, deflate, br\");\r",
+							"   pm.request.to.be.header(\"Accept\", \"*/*\");\r",
+							"   pm.request.to.be.header(\"Connection\", \"keep-alive\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"keycloakUserId\": \"New\",\r\n    \"clientName\": \"LivingProfile2\",\r\n    \"realmName\": \"LivingProfile-realm1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://pis.dev-living-profile.com/profileinformation/api/profileDetails/findOrCreate",
+					"protocol": "http",
+					"host": [
+						"pis",
+						"dev-living-profile",
+						"com"
+					],
+					"path": [
+						"profileinformation",
+						"api",
+						"profileDetails",
+						"findOrCreate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "postCreerGoals",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Verify Career goals API response is in JSON format\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"pm.test(\"Verify Career goals API response status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Verify Career goals API response status message is OK\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"pm.test(\"Verify Career goals API response Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"pm.test(\"Verify Career goals API response time is less than 1000 ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							"pm.test(\"Verify Career goals API response body contains all rquired fields \", function () {\r",
+							"   \r",
+							"    pm.expect(pm.response.text()).to.include(\"startDate\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"type\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"roles\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"industries\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify Career goals API response body fields values are as expected\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.startDate).to.eql(\"2010-12-01\");\r",
+							"    pm.expect(jsonData.type[0]).to.eql(\"Volunteer\");\r",
+							"    pm.expect(jsonData.roles[0]).to.eql(\"Senior Manager\");\r",
+							"    pm.expect(jsonData.industries[0].code).to.eql(\"Apparel and Fashion\");\r",
+							"    pm.expect(jsonData.industries[0].displayName).to.eql(\"Apparel and Fashion\");\r",
+							"});\r",
+							"pm.test(\"Verify Career goals API response headers transfer-encoding = chunked & content type = application/json\", function () {\r",
+							"   pm.response.to.have.header(\"content-length\");\r",
+							"   pm.response.to.have.header(\"Content-Type\");\r",
+							"   pm.response.to.be.header(\"content-length\", \"233\");\r",
+							"   pm.response.to.be.header(\"Content-Type\", \"application/json;charset=UTF-8\");\r",
+							"});\r",
+							"pm.test(\"Verify Career goals API request headers : Accept , Connection & Accept Encoding\", function () {\r",
+							"   pm.request.to.have.header(\"Accept-Encoding\");\r",
+							"   pm.request.to.have.header(\"Accept\");\r",
+							"   pm.request.to.have.header(\"Connection\");\r",
+							"});\r",
+							"pm.test(\"Verify Career goals API request headers values for Accept , Connection & Accept Encoding fields \", function () {\r",
+							"   pm.request.to.be.header(\"Accept-Encoding\", \"gzip, deflate, br\");\r",
+							"   pm.request.to.be.header(\"Accept\", \"*/*\");\r",
+							"   pm.request.to.be.header(\"Connection\", \"keep-alive\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"profileId\": \"{{id}}\",\r\n    //\"visible\": true,\r\n    \"startDate\": \"2010-12\",\r\n    \"type\": [\r\n        \"Volunteer\"\r\n    ],\r\n    \"roles\": [\r\n        \"Senior Manager\"\r\n    ],\r\n    \"industries\": [\r\n        {\r\n            \"code\": \"Apparel and Fashion\",\r\n            \"displayName\": \"Apparel and Fashion\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://pis.dev-living-profile.com/profileinformation/api/profile/{{id}}/careerGoals",
+					"protocol": "http",
+					"host": [
+						"pis",
+						"dev-living-profile",
+						"com"
+					],
+					"path": [
+						"profileinformation",
+						"api",
+						"profile",
+						"{{id}}",
+						"careerGoals"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "gerCareerGoalsWrongURL",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Verify Career Goals API response status code is 200\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API response status message is OK\", function () {\r",
+							"    pm.response.to.have.status(\"Not Found\");\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API response Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API response time is less than 1000 ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify Career Goals API response headers transfer-encoding = chunked & content type = application/json\", function () {\r",
+							"   pm.response.to.have.header(\"content-length\");\r",
+							"   pm.response.to.have.header(\"Content-Type\");\r",
+							"   pm.response.to.be.header(\"content-length\", \"54\");\r",
+							"   pm.response.to.be.header(\"Content-Type\", \"application/json;charset=UTF-8\");\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API request headers : Accept , Connection & Accept Encoding\", function () {\r",
+							"   pm.request.to.have.header(\"Accept-Encoding\");\r",
+							"   pm.request.to.have.header(\"Accept\");\r",
+							"   pm.request.to.have.header(\"Connection\");\r",
+							"});\r",
+							"pm.test(\"Verify visa information API request headers values for Accept , Connection & Accept Encoding fields \", function () {\r",
+							"   pm.request.to.be.header(\"Accept-Encoding\", \"gzip, deflate, br\");\r",
+							"   pm.request.to.be.header(\"Accept\", \"*/*\");\r",
+							"   pm.request.to.be.header(\"Connection\", \"keep-alive\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://pis.dev-living-profile.com/profileinformation/api/profile/{{id}}/careerGoal",
+					"protocol": "http",
+					"host": [
+						"pis",
+						"dev-living-profile",
+						"com"
+					],
+					"path": [
+						"profileinformation",
+						"api",
+						"profile",
+						"{{id}}",
+						"careerGoal"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCareerGoals",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Verify Career Goals API response is in JSON format\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify Career Goals API response status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API response status message is OK\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API response Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API response time is less than 2000 ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"pm.test(\"Verify Career goals API response body fields values are as expected\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.startDate).to.eql(\"2010-12-01\");\r",
+							"    pm.expect(jsonData.type[0]).to.eql(\"Volunteer\");\r",
+							"    pm.expect(jsonData.roles[0]).to.eql(\"Senior Manager\");\r",
+							"    pm.expect(jsonData.industries[0].code).to.eql(\"Apparel and Fashion\");\r",
+							"    pm.expect(jsonData.industries[0].displayName).to.eql(\"Apparel and Fashion\");\r",
+							"});\r",
+							"\r",
+							"var schema  = {\r",
+							"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"profileId\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"startDate\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"type\": {\r",
+							"      \"type\": \"array\",\r",
+							"      \"items\": [\r",
+							"        {\r",
+							"          \"type\": \"string\"\r",
+							"        }\r",
+							"      ]\r",
+							"    },\r",
+							"    \"roles\": {\r",
+							"      \"type\": \"array\",\r",
+							"      \"items\": [\r",
+							"        {\r",
+							"          \"type\": \"string\"\r",
+							"        }\r",
+							"      ]\r",
+							"    },\r",
+							"    \"industries\": {\r",
+							"      \"type\": \"array\",\r",
+							"      \"items\": [\r",
+							"        {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"code\": {\r",
+							"              \"type\": \"string\"\r",
+							"            },\r",
+							"            \"displayName\": {\r",
+							"              \"type\": \"string\"\r",
+							"            }\r",
+							"          },\r",
+							"          \"required\": [\r",
+							"            \"code\",\r",
+							"            \"displayName\"\r",
+							"          ]\r",
+							"        }\r",
+							"      ]\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"profileId\",\r",
+							"    \"startDate\",\r",
+							"    \"type\",\r",
+							"    \"roles\",\r",
+							"    \"industries\"\r",
+							"  ]\r",
+							"}\r",
+							"pm.test('Verify Career Goals API schema with response', function() {\r",
+							"    var result=tv4.validateResult(pm.response.json(), schema);\r",
+							"    if(!result.valid){\r",
+							"        console.log(result);\r",
+							"    }\r",
+							"    pm.expect(result.valid).to.be.true;\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Verify Career goals API response body contains all rquired fields \", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"startDate\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"type\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"roles\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"industries\");\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API response headers transfer-encoding = chunked & content type = application/json\", function () {\r",
+							"   pm.response.to.have.header(\"content-length\");\r",
+							"   pm.response.to.have.header(\"Content-Type\");\r",
+							"   pm.response.to.be.header(\"content-length\", \"233\");\r",
+							"   pm.response.to.be.header(\"Content-Type\", \"application/json;charset=UTF-8\");\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API request headers : Accept , Connection & Accept Encoding\", function () {\r",
+							"   pm.request.to.have.header(\"Accept-Encoding\");\r",
+							"   pm.request.to.have.header(\"Accept\");\r",
+							"   pm.request.to.have.header(\"Connection\");\r",
+							"});\r",
+							"pm.test(\"Verify visa information API request headers values for Accept , Connection & Accept Encoding fields \", function () {\r",
+							"   pm.request.to.be.header(\"Accept-Encoding\", \"gzip, deflate, br\");\r",
+							"   pm.request.to.be.header(\"Accept\", \"*/*\");\r",
+							"   pm.request.to.be.header(\"Connection\", \"keep-alive\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://pis.dev-living-profile.com/profileinformation/api/profile/{{id}}/careerGoals",
+					"protocol": "http",
+					"host": [
+						"pis",
+						"dev-living-profile",
+						"com"
+					],
+					"path": [
+						"profileinformation",
+						"api",
+						"profile",
+						"{{id}}",
+						"careerGoals"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updatetoWrongDateFormat",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Verify Career Goals API response is in JSON format\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API response status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API response status message is OK\", function () {\r",
+							"    pm.response.to.have.status(\"Bad Request\");\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API response Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API response time is less than 1000 ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1500);\r",
+							"});\r",
+							"var schema  =  {\r",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema\",\r",
+							"    \"$id\": \"http://example.com/example.json\",\r",
+							"    \"type\": \"object\",\r",
+							"    \"title\": \"The root schema\",\r",
+							"    \"description\": \"The root schema comprises the entire JSON document.\",\r",
+							"    \"default\": {},\r",
+							"    \"examples\": [\r",
+							"        {\r",
+							"            \"code\": \"LP_INVALID_DATA_FORMAT\",\r",
+							"            \"message\": \"Failed to parse a property with value '2022-01-21' for type 'java.util.Date'. Cause: 'Failed to parse a date property with value '2022-01-21', expected format of 'yyyy-MM''\"\r",
+							"        }\r",
+							"    ],\r",
+							"    \"required\": [\r",
+							"        \"code\",\r",
+							"        \"message\"\r",
+							"    ],\r",
+							"    \"properties\": {\r",
+							"        \"code\": {\r",
+							"            \"$id\": \"#/properties/code\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The code schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"LP_INVALID_DATA_FORMAT\"\r",
+							"            ]\r",
+							"        },\r",
+							"        \"message\": {\r",
+							"            \"$id\": \"#/properties/message\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The message schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"Failed to parse a property with value '2022-01-21' for type 'java.util.Date'. Cause: 'Failed to parse a date property with value '2022-01-21', expected format of 'yyyy-MM''\"\r",
+							"            ]\r",
+							"        }\r",
+							"    },\r",
+							"    \"additionalProperties\": true\r",
+							"}\r",
+							"pm.test('Verify Career Goals API schema with response', function() {\r",
+							"    var result=tv4.validateResult(pm.response.json(), schema);\r",
+							"    if(!result.valid){\r",
+							"        console.log(result);\r",
+							"    }\r",
+							"    pm.expect(result.valid).to.be.true;\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Verify Career Goals API response headers transfer-encoding = chunked & content type = application/json\", function () {\r",
+							"   pm.response.to.have.header(\"content-length\");\r",
+							"   pm.response.to.have.header(\"Content-Type\");\r",
+							"   pm.response.to.be.header(\"content-length\", \"176\");\r",
+							"   pm.response.to.be.header(\"Content-Type\", \"application/json;charset=UTF-8\");\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API request headers : Accept , Connection & Accept Encoding\", function () {\r",
+							"   pm.request.to.have.header(\"Accept-Encoding\");\r",
+							"   pm.request.to.have.header(\"Accept\");\r",
+							"   pm.request.to.have.header(\"Connection\");\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API request headers values for Accept , Connection & Accept Encoding fields \", function () {\r",
+							"   pm.request.to.be.header(\"Accept-Encoding\", \"gzip, deflate, br\");\r",
+							"   pm.request.to.be.header(\"Accept\", \"*/*\");\r",
+							"   pm.request.to.be.header(\"Connection\", \"keep-alive\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"profileId\": \"{{id}}\",\r\n    \"visible\": true,\r\n    \"startDate\": \"12-09-2022\",\r\n    \"type\": [\r\n        \"Volunteer\"\r\n    ],\r\n    \"roles\": [\r\n        \"Senior Manager\"\r\n    ],\r\n    \"industries\": [\r\n        {\r\n            \"code\": \"Apparel and Fashion\",\r\n            \"displayName\": \"Apparel and Fashion\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://pis.dev-living-profile.com/profileinformation/api/profile/{{id}}/careerGoals",
+					"protocol": "http",
+					"host": [
+						"pis",
+						"dev-living-profile",
+						"com"
+					],
+					"path": [
+						"profileinformation",
+						"api",
+						"profile",
+						"{{id}}",
+						"careerGoals"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SendIntToStringFieldsValidation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Verify Career Goals API response is in JSON format\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API response status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API response status message is OK\", function () {\r",
+							"    pm.response.to.have.status(\"Bad Request\");\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API response Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API response time is less than 1000 ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1500);\r",
+							"});\r",
+							"var schema  =  {\r",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema\",\r",
+							"    \"$id\": \"http://example.com/example.json\",\r",
+							"    \"type\": \"object\",\r",
+							"    \"title\": \"The root schema\",\r",
+							"    \"description\": \"The root schema comprises the entire JSON document.\",\r",
+							"    \"default\": {},\r",
+							"    \"examples\": [\r",
+							"        {\r",
+							"            \"code\": \"LP_MISMATCHED_INPUT\",\r",
+							"            \"message\": \"Cannot coerce null=11 to a String value\"\r",
+							"        }\r",
+							"    ],\r",
+							"    \"required\": [\r",
+							"        \"code\",\r",
+							"        \"message\"\r",
+							"    ],\r",
+							"    \"properties\": {\r",
+							"        \"code\": {\r",
+							"            \"$id\": \"#/properties/code\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The code schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"LP_MISMATCHED_INPUT\"\r",
+							"            ]\r",
+							"        },\r",
+							"        \"message\": {\r",
+							"            \"$id\": \"#/properties/message\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The message schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"Cannot coerce null=11 to a String value\"\r",
+							"            ]\r",
+							"        }\r",
+							"    },\r",
+							"    \"additionalProperties\": true\r",
+							"}\r",
+							"pm.test('Verify Career Goals API schema with response', function() {\r",
+							"    var result=tv4.validateResult(pm.response.json(), schema);\r",
+							"    if(!result.valid){\r",
+							"        console.log(result);\r",
+							"    }\r",
+							"    pm.expect(result.valid).to.be.true;\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Verify Career Goals API response headers transfer-encoding = chunked & content type = application/json\", function () {\r",
+							"   pm.response.to.have.header(\"content-length\");\r",
+							"   pm.response.to.have.header(\"Content-Type\");\r",
+							"   pm.response.to.be.header(\"content-length\", \"425\");\r",
+							"   pm.response.to.be.header(\"Content-Type\", \"application/json;charset=UTF-8\");\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API request headers : Accept , Connection & Accept Encoding\", function () {\r",
+							"   pm.request.to.have.header(\"Accept-Encoding\");\r",
+							"   pm.request.to.have.header(\"Accept\");\r",
+							"   pm.request.to.have.header(\"Connection\");\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API request headers values for Accept , Connection & Accept Encoding fields \", function () {\r",
+							"   pm.request.to.be.header(\"Accept-Encoding\", \"gzip, deflate, br\");\r",
+							"   pm.request.to.be.header(\"Accept\", \"*/*\");\r",
+							"   pm.request.to.be.header(\"Connection\", \"keep-alive\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"profileId\": \"{{id}}\",\r\n    //\"visible\": true,\r\n    \"startDate\": \"1901-01\",\r\n    \"type\": [\r\n        \"Volunteer\"\r\n    ],\r\n    \"roles\": [\r\n        21\r\n    ],\r\n    \"industries\": [\r\n        {\r\n            \"code\": \"Apparel and Fashion\",\r\n            \"displayName\": \"Apparel and Fashion\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://pis.dev-living-profile.com/profileinformation/api/profile/{{id}}/careerGoals",
+					"protocol": "http",
+					"host": [
+						"pis",
+						"dev-living-profile",
+						"com"
+					],
+					"path": [
+						"profileinformation",
+						"api",
+						"profile",
+						"{{id}}",
+						"careerGoals"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SendingStringToBolleanValidation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Verify Career Goals API response is in JSON format\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API response status code is 200\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API response status message is OK\", function () {\r",
+							"    pm.response.to.have.status(\"Bad Request\");\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API response Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API response time is less than 1000 ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1500);\r",
+							"});\r",
+							"var schema  =  {\r",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema\",\r",
+							"    \"$id\": \"http://example.com/example.json\",\r",
+							"    \"type\": \"object\",\r",
+							"    \"title\": \"The root schema\",\r",
+							"    \"description\": \"The root schema comprises the entire JSON document.\",\r",
+							"    \"default\": {},\r",
+							"    \"examples\": [\r",
+							"        {\r",
+							"            \"code\": \"LP_INVALID_DATA_FORMAT\",\r",
+							"            \"message\": \"Failed to parse a property with value '1' for type 'com.liaisonedu.livingprofile.profileinformation.enums.AnswerType'. Cause: 'Cannot deserialize value of type `com.liaisonedu.livingprofile.profileinformation.enums.AnswerType` from String \\\"1\\\": not one of the values accepted for Enum class: [No, Yes]'\"\r",
+							"        }\r",
+							"    ],\r",
+							"    \"required\": [\r",
+							"        \"code\",\r",
+							"        \"message\"\r",
+							"    ],\r",
+							"    \"properties\": {\r",
+							"        \"code\": {\r",
+							"            \"$id\": \"#/properties/code\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The code schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"LP_INVALID_DATA_FORMAT\"\r",
+							"            ]\r",
+							"        },\r",
+							"        \"message\": {\r",
+							"            \"$id\": \"#/properties/message\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The message schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"Failed to parse a property with value '1' for type 'com.liaisonedu.livingprofile.profileinformation.enums.AnswerType'. Cause: 'Cannot deserialize value of type `com.liaisonedu.livingprofile.profileinformation.enums.AnswerType` from String \\\"1\\\": not one of the values accepted for Enum class: [No, Yes]'\"\r",
+							"            ]\r",
+							"        }\r",
+							"    },\r",
+							"    \"additionalProperties\": true\r",
+							"}\r",
+							"pm.test('Verify Career Goals API schema with response', function() {\r",
+							"    var result=tv4.validateResult(pm.response.json(), schema);\r",
+							"    if(!result.valid){\r",
+							"        console.log(result);\r",
+							"    }\r",
+							"    pm.expect(result.valid).to.be.true;\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Verify Career Goals API response headers transfer-encoding = chunked & content type = application/json\", function () {\r",
+							"   pm.response.to.have.header(\"content-length\");\r",
+							"   pm.response.to.have.header(\"Content-Type\");\r",
+							"   pm.response.to.be.header(\"content-length\", \"176\");\r",
+							"   pm.response.to.be.header(\"Content-Type\", \"application/json;charset=UTF-8\");\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API request headers : Accept , Connection & Accept Encoding\", function () {\r",
+							"   pm.request.to.have.header(\"Accept-Encoding\");\r",
+							"   pm.request.to.have.header(\"Accept\");\r",
+							"   pm.request.to.have.header(\"Connection\");\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API request headers values for Accept , Connection & Accept Encoding fields \", function () {\r",
+							"   pm.request.to.be.header(\"Accept-Encoding\", \"gzip, deflate, br\");\r",
+							"   pm.request.to.be.header(\"Accept\", \"*/*\");\r",
+							"   pm.request.to.be.header(\"Connection\", \"keep-alive\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"profileId\": \"{{id}}\",\r\n    \"visible\": \"true\",\r\n    \"startDate\": \"1901-01\",\r\n    \"type\": [\r\n        \"Volunteer\"\r\n    ],\r\n    \"roles\": [\r\n        \"Senior Manager\"\r\n    ],\r\n    \"industries\": [\r\n        {\r\n            \"code\": \"Apparel and Fashion\",\r\n            \"displayName\": \"Apparel and Fashion\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://pis.dev-living-profile.com/profileinformation/api/profile/{{id}}/careerGoals",
+					"protocol": "http",
+					"host": [
+						"pis",
+						"dev-living-profile",
+						"com"
+					],
+					"path": [
+						"profileinformation",
+						"api",
+						"profile",
+						"{{id}}",
+						"careerGoals"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SendingWrongJSONFormatValidation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Verify Career Goals API response status code is 200\", function () {\r",
+							"    pm.response.to.have.status(415);\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API response status message is OK\", function () {\r",
+							"    pm.response.to.have.status(\"Unsupported Media Type\");\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API response time is less than 1500 ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1500);\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API response headers transfer-encoding = chunked & content type = application/json\", function () {\r",
+							"   pm.response.to.have.header(\"content-length\");\r",
+							"   pm.response.to.be.header(\"content-length\", \"0\");\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API request headers : Accept , Connection & Accept Encoding\", function () {\r",
+							"   pm.request.to.have.header(\"Accept-Encoding\");\r",
+							"   pm.request.to.have.header(\"Accept\");\r",
+							"   pm.request.to.have.header(\"Connection\");\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API request headers values for Accept , Connection & Accept Encoding fields \", function () {\r",
+							"   pm.request.to.be.header(\"Accept-Encoding\", \"gzip, deflate, br\");\r",
+							"   pm.request.to.be.header(\"Accept\", \"*/*\");\r",
+							"   pm.request.to.be.header(\"Connection\", \"keep-alive\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"profileId\": \"{{id}}\",\r\n  \"visibleToEmployers\": \"Yes\",\r\n  \"targetStartDate\": \"2022-01\",\r\n  \"targetJobTitle\": \"UX Designer\",\r\n  \"jobType\": [\r\n    \"Volunteer\"\r\n  ],\r\n  \"jobRolesOfInterest\": [\r\n    \"Manager\"\r\n  ],\r\n  \"industriesOfInterest\": [\r\n    \"Education\"\r\n  ]\r\n}"
+				},
+				"url": {
+					"raw": "http://pis.dev-living-profile.com/profileinformation/api/profile/{{id}}/careerGoals",
+					"protocol": "http",
+					"host": [
+						"pis",
+						"dev-living-profile",
+						"com"
+					],
+					"path": [
+						"profileinformation",
+						"api",
+						"profile",
+						"{{id}}",
+						"careerGoals"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteCareerGoals",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Verify Career Goals API response status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API response status message is OK\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API response Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"content-length\");\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API response time is less than 1000 ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API response headers transfer-encoding = chunked & content type = application/json\", function () {\r",
+							"   pm.response.to.have.header(\"content-length\");\r",
+							"   pm.response.to.be.header(\"content-length\", \"0\");\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API request headers : Accept , Connection & Accept Encoding\", function () {\r",
+							"   pm.request.to.have.header(\"Accept-Encoding\");\r",
+							"   pm.request.to.have.header(\"Accept\");\r",
+							"   pm.request.to.have.header(\"Connection\");\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API request headers values for Accept , Connection & Accept Encoding fields \", function () {\r",
+							"   pm.request.to.be.header(\"Accept-Encoding\", \"gzip, deflate, br\");\r",
+							"   pm.request.to.be.header(\"Accept\", \"*/*\");\r",
+							"   pm.request.to.be.header(\"Connection\", \"keep-alive\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://pis.dev-living-profile.com/profileinformation/api/profile/{{id}}/careerGoals",
+					"protocol": "http",
+					"host": [
+						"pis",
+						"dev-living-profile",
+						"com"
+					],
+					"path": [
+						"profileinformation",
+						"api",
+						"profile",
+						"{{id}}",
+						"careerGoals"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DelAgainCareerGoals",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Verify Career Goals API response status code is 200\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API response status message is OK\", function () {\r",
+							"    pm.response.to.have.status(\"Not Found\");\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API response Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"content-length\");\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API response time is less than 1000 ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API response headers transfer-encoding = chunked & content type = application/json\", function () {\r",
+							"   pm.response.to.have.header(\"content-length\");\r",
+							"   pm.response.to.be.header(\"content-length\", \"54\");\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API request headers : Accept , Connection & Accept Encoding\", function () {\r",
+							"   pm.request.to.have.header(\"Accept-Encoding\");\r",
+							"   pm.request.to.have.header(\"Accept\");\r",
+							"   pm.request.to.have.header(\"Connection\");\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API request headers values for Accept , Connection & Accept Encoding fields \", function () {\r",
+							"   pm.request.to.be.header(\"Accept-Encoding\", \"gzip, deflate, br\");\r",
+							"   pm.request.to.be.header(\"Accept\", \"*/*\");\r",
+							"   pm.request.to.be.header(\"Connection\", \"keep-alive\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://pis.dev-living-profile.com/profileinformation/api/profile/{{id}}/careerGoals",
+					"protocol": "http",
+					"host": [
+						"pis",
+						"dev-living-profile",
+						"com"
+					],
+					"path": [
+						"profileinformation",
+						"api",
+						"profile",
+						"{{id}}",
+						"careerGoals"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getNoContentResponse",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Verify Career Goals API response status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API response status message is No Content\", function () {\r",
+							"    pm.response.to.have.status(\"No Content\");\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API response Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API response time is less than 1000 ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API response headers content-length = 215 & content type = application/json\", function () {\r",
+							"   pm.response.to.have.header(\"Content-Type\");\r",
+							"   pm.response.to.be.header(\"Content-Type\", \"application/json;charset=UTF-8\");\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API request headers : Accept , Connection & Accept Encoding\", function () {\r",
+							"   pm.request.to.have.header(\"Accept-Encoding\");\r",
+							"   pm.request.to.have.header(\"Accept\");\r",
+							"   pm.request.to.have.header(\"Connection\");\r",
+							"});\r",
+							"pm.test(\"Verify Career Goals API request headers values for Accept , Connection & Accept Encoding fields \", function () {\r",
+							"   pm.request.to.be.header(\"Accept-Encoding\", \"gzip, deflate, br\");\r",
+							"   pm.request.to.be.header(\"Accept\", \"*/*\");\r",
+							"   pm.request.to.be.header(\"Connection\", \"keep-alive\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://pis.dev-living-profile.com/profileinformation/api/profile/{{id}}/careerGoals",
+					"protocol": "http",
+					"host": [
+						"pis",
+						"dev-living-profile",
+						"com"
+					],
+					"path": [
+						"profileinformation",
+						"api",
+						"profile",
+						"{{id}}",
+						"careerGoals"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
